@@ -1707,7 +1707,7 @@ static int bb_cmp(const void *a, const void *b) {
 	return ba->addr - bb->addr;
 }
 
-static int anal_fcn_list_bb(RCore *core, const char *input, bool one) {
+static bool anal_fcn_list_bb(RCore *core, const char *input, bool one) {
 	RDebugTracepoint *tp = NULL;
 	RListIter *iter;
 	RAnalBlock *b;
@@ -1715,7 +1715,7 @@ static int anal_fcn_list_bb(RCore *core, const char *input, bool one) {
 	ut64 addr, bbaddr = UT64_MAX;
 	PJ *pj = pj_new ();
 	if (!pj) {
-		return NULL;
+		return false;
 	}
 	bool firstItem = true;
 
